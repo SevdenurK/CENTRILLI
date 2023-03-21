@@ -9,8 +9,7 @@ import org.junit.runner.RunWith;
         plugin = "html:target/cucumber-report.html",
         features = "src/test/resources/features",
         glue = "com/centrilli/StepDefinitions",
-        dryRun = false,
-        tags = ""
+        dryRun = false
 )
 
 public class CukesRunner {
