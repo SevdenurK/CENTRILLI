@@ -44,6 +44,8 @@ public class LoginStepDefinitions {
     public void user_selects_module_button_to_land_on_the_page(String string) throws InterruptedException {
         Thread.sleep(3000);
         centrilliLoginPage.vehiclesContractsButton.click();
+        Thread.sleep(3000);
+
 
     }
 

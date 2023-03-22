@@ -15,7 +15,6 @@ public class CentrilliLoginPage {
     @FindBy(name = "login")
     public WebElement email;
 
-
     @FindBy(id = "password")
     public WebElement password;
 

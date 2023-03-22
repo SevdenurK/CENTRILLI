@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f83f5ab7-f97a-41db-a3d6-61e8739fdf37" name="Changes" comment="files updated">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/centrilli/pages/CentrilliLoginPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/centrilli/pages/CentrilliVehiclesContractsPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/centrilli/StepDefinitions/LoginStepDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/centrilli/StepDefinitions/LoginStepDefinitions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/centrilli/StepDefinitions/VehicleContractStepDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/centrilli/StepDefinitions/VehicleContractStepDefinitions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/centrilli/pages/CentrilliLoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/centrilli/pages/CentrilliLoginPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/centrilli/runners/CukesRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/centrilli/runners/CukesRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/centrilli/utilities/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/centrilli/utilities/Driver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/features/VehicleContractsLogs.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/VehicleContractsLogs.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,13 +61,55 @@
   }
 }</component>
   <component name="RunManager" selected="JUnit.CukesRunner">
-    <configuration name="Feature: VehicleContractsLogs" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Verify that user can cancel creating by clicking Discard button" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/VehicleContractsLogs.feature" />
+      <option name="GLUE" value="com.centrilli.StepDefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="CENTRILLI" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
-      <option name="SUGGESTED_NAME" value="Feature: VehicleContractsLogs" />
+      <option name="NAME_FILTER" value="^Verify that user can cancel creating by clicking Discard button$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Verify that user can cancel creating by clicking Discard button$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Verify that user can cancel creating by clicking Discard button" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: Verify that user can create a Vehicle Contract" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/VehicleContractsLogs.feature" />
+      <option name="GLUE" value="com.centrilli.StepDefinitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="CENTRILLI" />
+      <option name="NAME_FILTER" value="^Verify that user can create a Vehicle Contract$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Verify that user can create a Vehicle Contract$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Verify that user can create a Vehicle Contract" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: Verify that user can find the new created Vehicle Contract value under Vehicle Contract list by using search box." type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/VehicleContractsLogs.feature" />
+      <option name="GLUE" value="com.centrilli.StepDefinitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="CENTRILLI" />
+      <option name="NAME_FILTER" value="^Verify that user can find the new created Vehicle Contract value under Vehicle Contract list by using search box\.$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Verify that user can find the new created Vehicle Contract value under Vehicle Contract list by using search box\.$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Verify that user can find the new created Vehicle Contract value under Vehicle Contract list by using search box." />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -113,8 +158,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.CukesRunner" />
+        <item itemvalue="Cucumber Java.Scenario: Verify that user can find the new created Vehicle Contract value under Vehicle Contract list by using search box." />
+        <item itemvalue="Cucumber Java.Scenario: Verify that user can cancel creating by clicking Discard button" />
+        <item itemvalue="Cucumber Java.Scenario: Verify that user can create a Vehicle Contract" />
         <item itemvalue="Cucumber Java.Scenario: " />
-        <item itemvalue="Cucumber Java.Feature: VehicleContractsLogs" />
       </list>
     </recent_temporary>
   </component>
@@ -132,7 +179,8 @@
       <workItem from="1679174491753" duration="1517000" />
       <workItem from="1679176022942" duration="774000" />
       <workItem from="1679228222693" duration="9183000" />
-      <workItem from="1679430297353" duration="899000" />
+      <workItem from="1679430297353" duration="9031000" />
+      <workItem from="1679481051977" duration="30359000" />
     </task>
     <task id="LOCAL-00001" summary="files updated">
       <created>1679175904960</created>
@@ -141,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679175904960</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="files updated">
+      <created>1679431238838</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1679431238838</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
