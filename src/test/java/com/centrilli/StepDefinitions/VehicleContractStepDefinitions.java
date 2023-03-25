@@ -95,12 +95,95 @@ public class VehicleContractStepDefinitions {
         Thread.sleep(3000);
         vehiclesContractsPage.searchBox.sendKeys(Keys.ENTER);
     }
+
+
     @When("user should see his vehicle contract listed  under Vehicle Contract list")
-    public void user_should_see_his_vehicle_contract_listed_under_vehicle_contract_list() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void user_should_see_his_vehicle_contract_listed_under_vehicle_contract_list() throws InterruptedException {
+        //to be able to go to the last page, total value of crated vehicle contracts should be divided to 80 (1 page contains 80 v.c.)
+        //and denominator should be added by 1 to calculate the total page number.
+        //so, click() method should be used in a for loop to click next page "pageNumber" times to go to the last page.
+
+        Thread.sleep(5000);
+        String lastPageString = vehiclesContractsPage.pageLimit.getText();
+        int pageNumber = (Integer.valueOf(lastPageString) / 80) + 1;
+        double pageNumber1 = (Double.valueOf(lastPageString));
+        System.out.println("Page Number = " + pageNumber);
+        for (int i=0; i < pageNumber-1; i ++) {
+            vehiclesContractsPage.nextPageButton.click();
+        }
+        Thread.sleep(3000);
+
+        //
     }
 
+
+    @When("user clicks to Kanban icon to change the view into kanban style")
+    public void user_clicks_to_kanban_icon_to_change_the_view_into_kanban_style() throws InterruptedException {
+        Thread.sleep(3000);
+        vehiclesContractsPage.kanbanButton.click();
+        Thread.sleep(3000);
+    }
+
+    @When("user clicks to Graph icon to change the view into graph style")
+    public void user_clicks_to_graph_icon_to_change_the_view_into_graph_style() throws InterruptedException {
+        Thread.sleep(3000);
+        vehiclesContractsPage.graphButton.click();
+        Thread.sleep(3000);
+    }
+    @Then("user clicks to List icon to change the view into list style")
+    public void user_clicks_to_list_icon_to_change_the_view_into_list_style() throws InterruptedException {
+        Thread.sleep(3000);
+        vehiclesContractsPage.listButton.click();
+        Thread.sleep(3000);
+    }
+
+    @When("user clicks right arrow that is at the up right corner of screen to change the page number")
+    public void user_clicks_right_arrow_that_is_at_the_up_right_corner_of_screen_to_change_the_page_number() throws InterruptedException {
+        Thread.sleep(3000);
+        vehiclesContractsPage.nextPageButton.click();
+        Thread.sleep(3000);
+    }
+    @When("user jumps to the next page and the page number changes")
+    public void user_jumps_to_the_next_page_and_the_page_number_changes() throws InterruptedException {
+        Thread.sleep(5000);
+        String pageLimitString = vehiclesContractsPage.pageLimit.getText(); //01-80
+        String[] parts = pageLimitString.split("-"); //81-160
+        String part1 = parts[0]; // 81
+        String part2 = parts[1]; // 160
+        int pageNumber = (Integer.valueOf(part1) / 80) + 1;
+        System.out.println("Page Number = " + pageNumber);
+        Thread.sleep(3000);
+        Assert.assertEquals(2, pageNumber);
+    }
+    @When("user clicks left arrow that is at the up right corner of screen to change the page number")
+    public void user_clicks_left_arrow_that_is_at_the_up_right_corner_of_screen_to_change_the_page_number() throws InterruptedException {
+        Thread.sleep(3000);
+        vehiclesContractsPage.previousPageButton.click();
+        Thread.sleep(3000);
+    }
+    @Then("user jumps to the previous page and the page number changes")
+    public void user_jumps_to_the_previous_page_and_the_page_number_changes() throws InterruptedException {
+        Thread.sleep(5000);
+        String pageLimitString = vehiclesContractsPage.pageLimit.getText(); //01-80
+        String[] parts = pageLimitString.split("-"); //01-80
+        String part1 = parts[0]; // 01
+        String part2 = parts[1]; // 80
+        int pageNumber = (Integer.valueOf(part1) / 80) + 1;
+        System.out.println("Page Number = " + pageNumber);
+        Thread.sleep(3000);
+        Assert.assertEquals(1, pageNumber);
+    }
+
+    @When("Attachment\\(s) button is displayed at the top of the page")
+    public void attachment_s_button_is_displayed_at_the_top_of_the_page() throws InterruptedException {
+        Thread.sleep(3000);
+        Assert.assertTrue(vehiclesContractsPage.attachmentButton.isDisplayed());
+    }
+    @Then("Action button is displayed at the top of the page")
+    public void action_button_is_displayed_at_the_top_of_the_page() throws InterruptedException {
+        Thread.sleep(3000);
+        Assert.assertTrue(vehiclesContractsPage.actionButton.isDisplayed());
+    }
 
 
 }
