@@ -98,35 +98,7 @@ public class VehicleContractStepDefinitions {
 
     }
 
-    @When("user should see his vehicle contract listed  under Vehicle Contract list")
-    public void user_should_see_his_vehicle_contract_listed_under_vehicle_contract_list() throws InterruptedException {
 
-        Thread.sleep(3000);
-        Driver.getDriver().navigate().back();
-        Thread.sleep(3000);
-        String selectedActivationCostValue = vehiclesContractsPage.savedActivationCostValue.getText();
-        System.out.println("selectedActivationCostValue = " + selectedActivationCostValue);
-        Thread.sleep(5000);
-        Driver.getDriver().navigate().forward();
-        Thread.sleep(3000);
-
-        //to be able to go to the last page:
-        //total value of crated vehicle contracts should be divided to 80 (1 page contains 80 v.c.)
-        //and denominator should be added by 1 to calculate the total page number.
-        //so, click() method should be used in a for loop to click next page "pageNumber" times to go to the last page.
-        Thread.sleep(5000);
-        String lastPageString = vehiclesContractsPage.lastPageValue.getText();
-        int pageNumber = (Integer.valueOf(lastPageString) / 80) + 1;
-        System.out.println("Page Number = " + pageNumber);
-
-        for (int i = 0; i < pageNumber - 1; i++) {
-            vehiclesContractsPage.nextPageButton.click();
-        }
-
-        Thread.sleep(3000);
-        Driver.getDriver().findElement(By.xpath("//td[7][contains(text(), selectedActivationCostValue)]")).isDisplayed();
-
-    }
 
 
     @When("user clicks to Kanban icon to change the view into kanban style")
@@ -208,5 +180,55 @@ public class VehicleContractStepDefinitions {
         Thread.sleep(3000);
         Assert.assertTrue(vehiclesContractsPage.actionButton.isDisplayed());
     }
+
+    @When("user enters his recently created vehicle name on the search box and clicks enter to list the vehicle")
+    public void user_enters_his_recently_created_vehicle_name_on_the_search_box_and_clicks_enter_to_list_the_vehicle() throws InterruptedException {
+        Thread.sleep(3000);
+        Driver.getDriver().navigate().back();
+        Thread.sleep(3000);
+        String selectedVehicleName = vehiclesContractsPage.createdVehicleName.getText();
+        System.out.println("selectedVehicleName = " + selectedVehicleName);
+        Thread.sleep(3000);
+        Driver.getDriver().navigate().forward();
+        Thread.sleep(3000);
+        vehiclesContractsPage.searchBox.sendKeys(selectedVehicleName);
+        Thread.sleep(3000);
+        vehiclesContractsPage.searchBox.sendKeys(Keys.ENTER);
+        Thread.sleep(3000);
+        //Driver.getDriver().findElement(By.xpath("//td[4][1][contains(text(), selectedVehicleName)]")).isDisplayed();
+        Thread.sleep(3000);
+        vehiclesContractsPage.createdVehicleName.findElements(By.xpath("//td[4][1][contains(text(), selectedVehicleName)]"));
+        Thread.sleep(3000);
+    }
+
+    /*@When("user should see his vehicle contract listed  under Vehicle Contract list")
+    public void user_should_see_his_vehicle_contract_listed_under_vehicle_contract_list() throws InterruptedException {
+
+       /* Thread.sleep(3000);
+        Driver.getDriver().navigate().back();
+        Thread.sleep(3000);
+        String selectedActivationCostValue = vehiclesContractsPage.savedActivationCostValue.getText();
+        System.out.println("selectedActivationCostValue = " + selectedActivationCostValue);
+        Thread.sleep(5000);
+        Driver.getDriver().navigate().forward();
+        Thread.sleep(3000);
+
+        //to be able to go to the last page:
+        //total value of crated vehicle contracts should be divided to 80 (1 page contains 80 v.c.)
+        //and denominator should be added by 1 to calculate the total page number.
+        //so, click() method should be used in a for loop to click next page "pageNumber" times to go to the last page.*/
+        /*Thread.sleep(5000);
+        String lastPageString = vehiclesContractsPage.lastPageValue.getText();
+        int pageNumber = (Integer.valueOf(lastPageString) / 80) + 1;
+        System.out.println("Page Number = " + pageNumber);
+
+        for (int i = 0; i < pageNumber - 1; i++) {
+            vehiclesContractsPage.nextPageButton.click();
+        }
+
+        Thread.sleep(3000);
+        Driver.getDriver().findElement(By.xpath("//td[7][contains(text(), selectedActivationCostValue)]")).isDisplayed();
+
+    }*/
 
 }

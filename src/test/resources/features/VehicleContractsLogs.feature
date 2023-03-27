@@ -19,7 +19,7 @@ Feature: Vehicle contracts functionality
       And user receives a warning popup message, means that he is unable to create a vehicle.
       Then user makes sure his contract is NOT created by verifying page title stayed the same
 
-@wip
+
     Scenario: Verify that user can cancel creating by clicking Discard button
       When user clicks on the Create button
       And user clicks on the Discard button
@@ -40,14 +40,13 @@ Feature: Vehicle contracts functionality
       And Attachment(s) button is displayed at the top of the page
       Then Action button is displayed at the top of the page
 
-
+@wip
     Scenario: Verify that user can find the new created Vehicle Contract value under Vehicle Contract list by using search box.
       When user clicks on the Create button
       And user selects a Vehicle
-      And user enters an Activation Cost
       And user clicks to Save button
       And user selects "Vehicles Contracts" module button to land on the page
-      When user should see his vehicle contract listed  under Vehicle Contract list
+      Then user enters his recently created vehicle name on the search box and clicks enter to list the vehicle
 
 
     Scenario: 7. Verify that user can change Vehicle Contract display to Kanban / List / Graph

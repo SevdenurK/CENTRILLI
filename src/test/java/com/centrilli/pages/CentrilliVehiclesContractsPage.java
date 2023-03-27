@@ -37,7 +37,9 @@ public class CentrilliVehiclesContractsPage {
     @FindBy (xpath = "/html/body/div[1]/div[2]/div[2]/div/div/div/table/tbody/tr[last()]")
     public WebElement lastRow;
 
-    @FindBy (xpath = "//*[@id=\"o_field_input_814\"]")
+    //@FindBy (xpath = "//*[@id=\"o_field_input_814\"]")
+    @FindBy (xpath = "//*[@name=\"vehicle_id\"]")
+    //*[@name="vehicle_id"]
     public WebElement createdVehicleName;
 
     @FindBy (xpath = "//button[@accesskey='k']")
@@ -58,10 +60,10 @@ public class CentrilliVehiclesContractsPage {
     @FindBy (xpath = "//span[@class='o_pager_value']")
     public WebElement pageLimit;
 
-    @FindBy (xpath = "/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/div/div[2]/button/text()[1]")
+    @FindBy (xpath = "//div/button[contains(text(),\"Attachment(s)\")]")
     public WebElement attachmentButton;
 
-    @FindBy (xpath = "/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/div/div[3]/button")
+    @FindBy (xpath = "//div/button[contains(text(),\"Action\")]")
     public WebElement actionButton;
 
     @FindBy (xpath = "//span[@class='o_pager_limit']")
