@@ -1,6 +1,7 @@
 package com.centrilli.StepDefinitions;
 
 import com.centrilli.pages.CentrilliLoginPage;
+import com.centrilli.utilities.BrowserUtils;
 import com.centrilli.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -13,10 +14,10 @@ public class LoginStepDefinitions {
 
     @Given("User logged in as posmanager")
     public void user_logged_in_as_posmanager() throws InterruptedException {
-        Thread.sleep(3000);
+        BrowserUtils.waitFor(3);
         centrilliLoginPage.email.sendKeys("posmanager10@info.com");
         centrilliLoginPage.password.sendKeys("posmanager");
-        Thread.sleep(3000);
+        BrowserUtils.waitFor(3);
         centrilliLoginPage.loginButton.click();
     }
 
@@ -30,21 +31,21 @@ public class LoginStepDefinitions {
             centrilliLoginPage.moreButton.click();
             Thread.sleep(5000);
             centrilliLoginPage.fleetButton.click();
-            Thread.sleep(3000);
+            BrowserUtils.waitFor(3);
 
         } else {
 
             centrilliLoginPage.fleetButton.click();
-            Thread.sleep(3000);
+            BrowserUtils.waitFor(3);
 
         }
     }
 
     @And("user selects {string} module button to land on the page")
     public void user_selects_module_button_to_land_on_the_page(String string) throws InterruptedException {
-        Thread.sleep(3000);
+        BrowserUtils.waitFor(3);
         centrilliLoginPage.vehiclesContractsButton.click();
-        Thread.sleep(3000);
+        BrowserUtils.waitFor(3);
 
 
     }

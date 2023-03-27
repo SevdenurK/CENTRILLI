@@ -1,4 +1,5 @@
-Feature: Vehicle contracts functionality
+@CENTRIL10-479
+Feature: Vehicles Contracts Functionality
 
   Background:
     Given User logged in as posmanager
@@ -6,6 +7,7 @@ Feature: Vehicle contracts functionality
     And user selects "Vehicles Contracts" module button to land on the page
 
 
+    @CENTRIL10-466
     Scenario: Verify that user can create a Vehicle Contract
       When user clicks on the Create button
       And user selects a Vehicle
@@ -13,6 +15,7 @@ Feature: Vehicle contracts functionality
       Then page title changes to the new Vehicle Contract value
 
 
+    @CENTRIL10-472
     Scenario: Verify that user cannot create a Vehicle Contract without selecting vehicle
       When user clicks on the Create button
       And user clicks to Save button
@@ -20,12 +23,14 @@ Feature: Vehicle contracts functionality
       Then user makes sure his contract is NOT created by verifying page title stayed the same
 
 
+    @CENTRIL10-473
     Scenario: Verify that user can cancel creating by clicking Discard button
       When user clicks on the Create button
       And user clicks on the Discard button
       Then user makes sure his contract is discarded by landing on the Vehicles Contracts page
 
 
+    @CENTRIL10-474
     Scenario: Verify that page title is changed to the new Vehicle Contract value after user create the Vehicle Contract
       When user clicks on the Create button
       And user selects a Vehicle
@@ -33,14 +38,16 @@ Feature: Vehicle contracts functionality
       Then page title changes to the new Vehicle Contract value
 
 
-    Scenario: Verify that “Attachment” and Action buttons are displayed at the top of the page (after creating a new Vehicle Contract).
+    @CENTRIL10-475
+    Scenario: Verify that “Attachment(s)” and Action buttons are displayed at the top of the page (after creating a new Vehicle Contract).
       When user clicks on the Create button
       And user selects a Vehicle
       And user clicks to Save button
       And Attachment(s) button is displayed at the top of the page
       Then Action button is displayed at the top of the page
 
-@wip
+
+    @CENTRIL10-476
     Scenario: Verify that user can find the new created Vehicle Contract value under Vehicle Contract list by using search box.
       When user clicks on the Create button
       And user selects a Vehicle
@@ -49,12 +56,14 @@ Feature: Vehicle contracts functionality
       Then user enters his recently created vehicle name on the search box and clicks enter to list the vehicle
 
 
+    @CENTRIL10-477
     Scenario: 7. Verify that user can change Vehicle Contract display to Kanban / List / Graph
       When user clicks to Kanban icon to change the view into kanban style
       And user clicks to Graph icon to change the view into graph style
       Then user clicks to List icon to change the view into list style
 
 
+    @CENTRIL10-478
     Scenario: 8. Verify that user can change Vehicle Contract page number by right and left arrow, up right corner of screen.
       When user clicks to List icon to change the view into list style
       And user clicks right arrow that is at the up right corner of screen to change the page number
