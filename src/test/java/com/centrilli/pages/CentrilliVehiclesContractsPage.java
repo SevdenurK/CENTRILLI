@@ -16,8 +16,6 @@ public class CentrilliVehiclesContractsPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-
-
     @FindBy(xpath = "//button[@class='btn btn-primary btn-sm o_list_button_add']")
     public WebElement createButton;
 
@@ -67,6 +65,14 @@ public class CentrilliVehiclesContractsPage {
     public WebElement actionButton;
 
     @FindBy (xpath = "//span[@class='o_pager_limit']")
-    public WebElement lastPage;
+    public WebElement lastPageValue;
 
+    @FindBy (xpath = "//input[@name='amount']")
+    public WebElement activationCostButton;
+
+    @FindBy (xpath = "//span[@name='amount']")
+    public WebElement savedActivationCostValue;
+
+    @FindBy (xpath = "//td[@class='o_data_cell o_list_number'][1]")
+    public WebElement activationCostColumn;
 }

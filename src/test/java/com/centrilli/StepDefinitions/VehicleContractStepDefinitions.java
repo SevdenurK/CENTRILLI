@@ -3,16 +3,21 @@ package com.centrilli.StepDefinitions;
 import com.centrilli.pages.CentrilliLoginPage;
 import com.centrilli.pages.CentrilliVehiclesContractsPage;
 import com.centrilli.utilities.Driver;
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.Random;
 
 public class VehicleContractStepDefinitions {
 
 
+    Faker faker = new Faker();
     CentrilliVehiclesContractsPage vehiclesContractsPage = new CentrilliVehiclesContractsPage();
 
 
@@ -27,7 +32,10 @@ public class VehicleContractStepDefinitions {
     public void user_selects_a_vehicle() throws InterruptedException {
         vehiclesContractsPage.vehicleDropDown.click();
         Thread.sleep(3000);
-        vehiclesContractsPage.vehicleDropDown.sendKeys(Keys.DOWN);
+        int xTimesDown = faker.number().numberBetween(1,7);
+        for (int i = 0; i < xTimesDown; i++) {
+            vehiclesContractsPage.vehicleDropDown.sendKeys(Keys.DOWN);
+        }
         Thread.sleep(3000);
         vehiclesContractsPage.vehicleDropDown.sendKeys(Keys.ENTER);
         Thread.sleep(3000);
@@ -78,42 +86,46 @@ public class VehicleContractStepDefinitions {
         System.out.println("expectedTitle = " + expectedTitle);
         String actualTitle = Driver.getDriver().getTitle();
         System.out.println("actualTitle = " + actualTitle);
+        Assert.assertEquals(expectedTitle, actualTitle);
     }
 
-    @When("user searches for his recently created vehicle contract using search box by typing newly created vehicle's name")
-    public void user_searches_for_his_recently_created_vehicle_contract_using_search_box_by_typing_newly_created_vehicle_s_name() throws InterruptedException {
-        Driver.getDriver().navigate().back();
-        Thread.sleep(3000);
-        String selectedVehicle = vehiclesContractsPage.createdVehicleName.getText();
-        System.out.println("selectedVehicle = " + selectedVehicle);
-        Thread.sleep(3000);
-        Driver.getDriver().navigate().forward();
-        Thread.sleep(3000);
-        vehiclesContractsPage.searchBox.click();
-        Thread.sleep(3000);
-        vehiclesContractsPage.searchBox.sendKeys(selectedVehicle);
-        Thread.sleep(3000);
-        vehiclesContractsPage.searchBox.sendKeys(Keys.ENTER);
-    }
+    @When("user enters an Activation Cost")
+    public void user_enters_an_activation_cost() {
+        double activationCost = faker.number().randomDouble(2,1, 1000);
+        String activationCostString = Double.toString(activationCost);
+        vehiclesContractsPage.activationCostButton.clear();
+        vehiclesContractsPage.activationCostButton.sendKeys(activationCostString);
 
+    }
 
     @When("user should see his vehicle contract listed  under Vehicle Contract list")
     public void user_should_see_his_vehicle_contract_listed_under_vehicle_contract_list() throws InterruptedException {
-        //to be able to go to the last page, total value of crated vehicle contracts should be divided to 80 (1 page contains 80 v.c.)
-        //and denominator should be added by 1 to calculate the total page number.
-        //so, click() method should be used in a for loop to click next page "pageNumber" times to go to the last page.
 
+        Thread.sleep(3000);
+        Driver.getDriver().navigate().back();
+        Thread.sleep(3000);
+        String selectedActivationCostValue = vehiclesContractsPage.savedActivationCostValue.getText();
+        System.out.println("selectedActivationCostValue = " + selectedActivationCostValue);
         Thread.sleep(5000);
-        String lastPageString = vehiclesContractsPage.pageLimit.getText();
-        int pageNumber = (Integer.valueOf(lastPageString) / 80) + 1;
-        double pageNumber1 = (Double.valueOf(lastPageString));
-        System.out.println("Page Number = " + pageNumber);
-        for (int i=0; i < pageNumber-1; i ++) {
-            vehiclesContractsPage.nextPageButton.click();
-        }
+        Driver.getDriver().navigate().forward();
         Thread.sleep(3000);
 
-        //
+        //to be able to go to the last page:
+        //total value of crated vehicle contracts should be divided to 80 (1 page contains 80 v.c.)
+        //and denominator should be added by 1 to calculate the total page number.
+        //so, click() method should be used in a for loop to click next page "pageNumber" times to go to the last page.
+        Thread.sleep(5000);
+        String lastPageString = vehiclesContractsPage.lastPageValue.getText();
+        int pageNumber = (Integer.valueOf(lastPageString) / 80) + 1;
+        System.out.println("Page Number = " + pageNumber);
+
+        for (int i = 0; i < pageNumber - 1; i++) {
+            vehiclesContractsPage.nextPageButton.click();
+        }
+
+        Thread.sleep(3000);
+        Driver.getDriver().findElement(By.xpath("//td[7][contains(text(), selectedActivationCostValue)]")).isDisplayed();
+
     }
 
 
@@ -122,6 +134,10 @@ public class VehicleContractStepDefinitions {
         Thread.sleep(3000);
         vehiclesContractsPage.kanbanButton.click();
         Thread.sleep(3000);
+        String actual = Driver.getDriver().getCurrentUrl();
+        //Thread.sleep(3000);
+        String expected="https://qa.centrilli.com/web?#view_type=kanban&model=fleet.vehicle.log.contract&menu_id=146&action=163";
+        Assert.assertEquals(expected, actual);
     }
 
     @When("user clicks to Graph icon to change the view into graph style")
@@ -129,12 +145,20 @@ public class VehicleContractStepDefinitions {
         Thread.sleep(3000);
         vehiclesContractsPage.graphButton.click();
         Thread.sleep(3000);
+        String actual = Driver.getDriver().getCurrentUrl();
+        //Thread.sleep(3000);
+        String expected="https://qa.centrilli.com/web?#view_type=graph&model=fleet.vehicle.log.contract&menu_id=146&action=163";
+        Assert.assertEquals(expected, actual);
     }
     @Then("user clicks to List icon to change the view into list style")
     public void user_clicks_to_list_icon_to_change_the_view_into_list_style() throws InterruptedException {
         Thread.sleep(3000);
         vehiclesContractsPage.listButton.click();
         Thread.sleep(3000);
+        String actual = Driver.getDriver().getCurrentUrl();
+        //Thread.sleep(3000);
+        String expected="https://qa.centrilli.com/web?#view_type=list&model=fleet.vehicle.log.contract&menu_id=146&action=163";
+        Assert.assertEquals(expected, actual);
     }
 
     @When("user clicks right arrow that is at the up right corner of screen to change the page number")
@@ -184,6 +208,5 @@ public class VehicleContractStepDefinitions {
         Thread.sleep(3000);
         Assert.assertTrue(vehiclesContractsPage.actionButton.isDisplayed());
     }
-
 
 }
